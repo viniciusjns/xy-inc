@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8084/ZupWebService/ZupWebService?wsdl" uri="src/conf/xml-resources/web-service-references/ZupWebService/wsdl/localhost_8084/ZupWebService/ZupWebService.wsdl"/>
+    <system systemId="http://localhost:8084/ZupWebService/ZupWebService?xsd=1" uri="src/conf/xml-resources/web-service-references/ZupWebService/wsdl/localhost_8084/ZupWebService/ZupWebService.xsd_1.xsd"/>
+</catalog>

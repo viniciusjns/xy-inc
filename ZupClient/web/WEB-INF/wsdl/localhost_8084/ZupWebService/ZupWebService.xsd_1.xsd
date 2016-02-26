@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap/">
+
+<xs:element name="alterar" type="tns:alterar" />
+
+<xs:element name="alterarResponse" type="tns:alterarResponse" />
+
+<xs:element name="buscarTodos" type="tns:buscarTodos" />
+
+<xs:element name="buscarTodosResponse" type="tns:buscarTodosResponse" />
+
+<xs:element name="excluir" type="tns:excluir" />
+
+<xs:element name="excluirResponse" type="tns:excluirResponse" />
+
+<xs:element name="salvar" type="tns:salvar" />
+
+<xs:element name="salvarResponse" type="tns:salvarResponse" />
+
+<xs:complexType name="excluir">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pontoInteresse" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pontoInteresse">
+<xs:sequence>
+<xs:element name="descricao" type="xs:string" minOccurs="0" />
+<xs:element name="id" type="xs:int" />
+<xs:element name="posx" type="xs:int" />
+<xs:element name="posy" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="excluirResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="salvar">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pontoInteresse" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="salvarResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="buscarTodos">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="buscarTodosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pontoInteresse" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="alterar">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pontoInteresse" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="alterarResponse">
+<xs:sequence />
+</xs:complexType>
+</xs:schema>
