@@ -1,96 +1,106 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Index</title>
-</h:head>
-<h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Index</title>
+    </h:head>
+    <h:body>
 
-	<h:form id="cadastro">
-		<h:inputHidden value="#{pontoInteresseBean.pontoInteresse.id}"/>
-		<h:panelGrid columns="2">
+        <h:form id="form" style="font-size: 12px;">
+            <p:tabView>
 
-			<h:outputLabel value="Descrição: " />
-			<h:inputText value="#{pontoInteresseBean.pontoInteresse.descricao}" />
-			<h:outputLabel value="Posição X: " />
-			<h:inputText value="#{pontoInteresseBean.pontoInteresse.posx}" />
-			<h:outputLabel value="Posição Y: " />
-			<h:inputText value="#{pontoInteresseBean.pontoInteresse.posy}" />
-
-			<p:commandButton value="Salvar" action="#{pontoInteresseBean.salvar}"
-				update=":cadastro, :lista" />
+                <p:tab title="Cadastrar e Listar" id="cadastro">
 
 
-		</h:panelGrid>
+                    <h:inputHidden value="#{pontoInteresseBean.pontoInteresse.id}"/>
+                    <h:panelGrid columns="2">
 
-	</h:form>
+                        <h:outputLabel value="Descrição: " />
+                        <h:inputText value="#{pontoInteresseBean.pontoInteresse.descricao}" />
+                        <h:outputLabel value="Posição X: " />
+                        <h:inputText value="#{pontoInteresseBean.pontoInteresse.posx}" />
+                        <h:outputLabel value="Posição Y: " />
+                        <h:inputText value="#{pontoInteresseBean.pontoInteresse.posy}" />
 
-	<h:form id="lista">
-
-		<p:dataTable value="#{pontoInteresseBean.pontos}" var="ponto">
-
-			<p:column>
-				#{ponto.descricao}
-			</p:column>
-
-			<p:column>
-				#{ponto.posx}
-			</p:column>
-			
-			<p:column>
-				#{ponto.posy}
-			</p:column>
-			
-			<p:column>
-				<p:commandButton value="Editar" update=":cadastro">
-					<f:setPropertyActionListener value="#{ponto}" target="#{pontoInteresseBean.pontoInteresse}"/>
-				</p:commandButton>
-				<p:commandButton value="Excluir" action="#{pontoInteresseBean.excluir}" update=":lista">
-					<f:setPropertyActionListener value="#{ponto}" target="#{pontoInteresseBean.pontoInteresse}"/>
-				</p:commandButton>
-			</p:column>
-
-		</p:dataTable>
-
-	</h:form>
-	
-	<h:form id="consultar">
-	
-		<h:panelGrid columns="2">
-		
-			<h:outputLabel value="Digite sua posição em X: " />
-			<h:inputText value="#{pontoInteresseBean.posx}" />
-			<h:outputLabel value="Digite sua posição em Y: " />
-			<h:inputText value="#{pontoInteresseBean.posy}" />
-			<h:outputLabel value="Digite a distância máxima em metros: " />
-			<h:inputText value="#{pontoInteresseBean.distancia}" />
-			<p:commandButton value="Consultar" action="#{pontoInteresseBean.buscarPorDistancia}" update=":consultar"/>
-		
-		</h:panelGrid>
-		
-		<p:dataTable value="#{pontoInteresseBean.pontosConsulta}" var="ponto">
-
-			<p:column>
-				#{ponto.descricao}
-			</p:column>
-
-			<p:column>
-				#{ponto.posx}
-			</p:column>
-			
-			<p:column>
-				#{ponto.posy}
-			</p:column>
-
-		</p:dataTable>
-	
-	</h:form>
+                        <p:commandButton value="Salvar" action="#{pontoInteresseBean.salvar}"
+                                         update=":form" />
 
 
-</h:body>
+                    </h:panelGrid>
+
+                    <br/><br/>
+
+                    <p:dataTable value="#{pontoInteresseBean.pontos}" var="ponto">
+
+                        <p:column headerText="Descrição">
+                            #{ponto.descricao}
+                        </p:column>
+
+                        <p:column headerText="Coordenada X">
+                            #{ponto.posx}
+                        </p:column>
+
+                        <p:column headerText="Coordenada Y">
+                            #{ponto.posy}
+                        </p:column>
+
+                        <p:column headerText="Ações">
+                            <p:commandButton value="Editar" update=":form">
+                                <f:setPropertyActionListener value="#{ponto}" target="#{pontoInteresseBean.pontoInteresse}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Excluir" action="#{pontoInteresseBean.excluir}" update=":form">
+                                <f:setPropertyActionListener value="#{ponto}" target="#{pontoInteresseBean.pontoInteresse}"/>
+                            </p:commandButton>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+
+                </p:tab>
+
+                <p:tab title="Consultar" id="consultar">
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Digite sua posição em X: " />
+                        <h:inputText value="#{pontoInteresseBean.posx}" />
+                        <h:outputLabel value="Digite sua posição em Y: " />
+                        <h:inputText value="#{pontoInteresseBean.posy}" />
+                        <h:outputLabel value="Digite a distância máxima em metros: " />
+                        <h:inputText value="#{pontoInteresseBean.distancia}" />
+                        <p:commandButton value="Consultar" action="#{pontoInteresseBean.buscarPorDistancia}" update=":form"/>
+
+                    </h:panelGrid>
+
+                    <p:dataTable value="#{pontoInteresseBean.pontosConsulta}" var="ponto">
+
+                        <p:column headerText="Descrição">
+                            #{ponto.descricao}
+                        </p:column>
+
+                        <p:column headerText="Coordenada X">
+                            #{ponto.posx}
+                        </p:column>
+
+                        <p:column headerText="Coordenada Y">
+                            #{ponto.posy}
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                </p:tab>
+
+
+            </p:tabView>
+
+        </h:form>
+
+    </h:body>
 </html>
